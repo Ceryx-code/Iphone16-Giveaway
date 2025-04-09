@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iPhone 16 Giveaway Entry</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .success {
+      color: green;
+      margin-top: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>iPhone 16 Giveaway</h2>
+    <p>Enter your details & pay ₹5 to join the giveaway.</p>
+
+    <input type="email" id="email" placeholder="Your Email" required />
+    <input type="tel" id="phone" placeholder="Your Phone Number" required />
+
+    <button onclick="makePayment()">Pay ₹5 & Join</button>
+
+    <div class="success" id="successMsg"></div>
+  </div>
+
+  <script>
+    function makePayment() {
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+
+      if (!email || !phone) {
+        alert("Please enter both email and phone number.");
+        return;
+      }
+
+      const upiUrl = `upi://pay?pa=msabhidevkrishna-2@oksbi&pn=iPhoneGiveaway&am=5&cu=INR&tn=Giveaway Entry from ${email}`;
+
+      // Save data to backend (not included)
+      window.location.href = upiUrl;
+
+      document.getElementById("successMsg").innerText = "Redirecting to payment...";
+    }
+  </script>
+
+</body>
+</html>
